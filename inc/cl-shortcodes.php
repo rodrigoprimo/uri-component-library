@@ -1075,6 +1075,21 @@ function uri_cl_shortcode_tabs( $atts, $content = null ) {
 		);
 
 	include uri_cl_shortcode_get_template( 'tabs' );
+
+	// Add warning 
+	$admin = is_user_logged_in();
+
+	if ($admin) {
+		$output .= uri_cl_return_error(
+			'Tabs',
+			false,
+			array(array(
+				'attr' => 'deprecated',
+				'message' => 'Tabs are going away. <a href="https://www.uri.edu">Link</a>',
+				'status' => 'warning',
+			))
+		);
+	}
 	return $output;
 
 }
